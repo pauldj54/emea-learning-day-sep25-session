@@ -1,0 +1,15 @@
+# Azure AI Search SDK - Preview version for document-level access control
+azure-search-documents==11.6.0b12
+
+# Azure authentication
+azure-identity>=1.15.0
+
+# Environment variables management
+python-dotenv>=1.0.0
+
+# PDF text extraction
+PyPDF2>=3.0.0
+
+# Jupyter notebook support
+jupyter>=1.0.0
+ipykernel>=6.25.0

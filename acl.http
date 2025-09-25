@@ -1,0 +1,35 @@
+@endpoint=<your AI Search endpoint>
+@index=<your index name>
+# Admin access token
+@search-token=<Your admin access token>
+# Alex Wilber access token
+#@search-token=<Entra ID user token for Alex Wilber>
+@api-version=2025-05-01-preview
+
+###
+GET {{endpoint}}/indexes/{{index}}?api-version={{api-version}}
+Authorization: Bearer {{search-token}}
+
+### Query Sample Documents with x-ms-query-source-authorization
+POST {{endpoint}}/indexes/{{index}}/docs/search?api-version={{api-version}}
+Authorization: Bearer {{search-token}}
+x-ms-query-source-authorization: {{search-token}}
+Content-Type: application/json
+
+{
+    "search": "*",
+    "select": "doc_id,metadata_storage_name",
+    "orderby": "metadata_storage_name asc"
+}
+###
+
+### Query Sample Documents without x-ms-query-source-authorization
+POST {{endpoint}}/indexes/{{index}}/docs/search?api-version={{api-version}}
+Authorization: Bearer {{search-token}}
+Content-Type: application/json
+
+{
+    "search": "*",
+    "select": "doc_id,metadata_storage_name",
+    "orderby": "metadata_storage_name asc"
+}
